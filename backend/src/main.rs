@@ -10,6 +10,8 @@ use graphql::{create_schema, AppSchema};
 use async_graphql_axum::{GraphQLRequest, GraphQLResponse};
 use std::{sync::Arc, net::SocketAddr};
 use db::connect;
+use tower_http::cors::{Any, CorsLayer};
+
 
 #[tokio::main]
 async fn main() {
@@ -19,8 +21,10 @@ async fn main() {
     // 2️⃣ Creazione dello schema GraphQL + inserimento del DB nello schema
     let schema = Arc::new(create_schema(db.clone()));
 
+    let cors = CorsLayer::new().allow_origin(Any).allow_methods(Any).allow_headers(Any);
+
     // 3️⃣ Router con UN SOLO stato: lo schema
-    let app = Router::new() .route("/graphql", get(graphiql).post(graphql_handler)) .with_state(schema.clone());
+    let app = Router::new() .route("/graphql", get(graphiql).post(graphql_handler)) .with_state(schema.clone()).layer(cors);
 
     // 4️⃣ Indirizzo del server
     let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
