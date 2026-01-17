@@ -1,6 +1,6 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
-import { GET_PRODUCTS } from "./graphql/queries";
+import { GET_PRODUCTS } from "../graphql/queries";
 
 export const ProductList: React.FC = () => {
   type Product = {
@@ -18,7 +18,6 @@ export const ProductList: React.FC = () => {
 
   return (
     <div>
-      <h1>Products</h1>
       <ul>
         {data!.products.map((product, idx) => (
           <li key={idx}>

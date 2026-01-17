@@ -8,7 +8,7 @@ pub type AppSchema = Schema<QueryRoot, MutationRoot, EmptySubscription>;
 
 pub fn create_schema(db: Arc<Database>) -> AppSchema {
     Schema::build(QueryRoot,MutationRoot,  EmptySubscription)
-        .data(db) // inseriamo il DB nello schema
+        .data(db) // insert the DB in the schema
         .finish()
 }
 
@@ -16,7 +16,7 @@ pub struct QueryRoot;
 
 #[Object]
 impl QueryRoot {
-    // questo è un resolver (cuore di GraphQL)
+    // this is a resolver (GraphQL heart)
     async fn products(&self, ctx: &Context<'_>) -> Vec<Product> {
         let db = ctx.data::<Arc<Database>>().unwrap();
         let collection = db.collection::<Product>("products");

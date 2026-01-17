@@ -15,22 +15,22 @@ use tower_http::cors::{Any, CorsLayer};
 
 #[tokio::main]
 async fn main() {
-    // 1️⃣ Connessione al DB
+    // 1️⃣ Connection to DB
     let db = connect().await;
 
-    // 2️⃣ Creazione dello schema GraphQL + inserimento del DB nello schema
+    // 2️⃣ Creation schema GraphQL + DB insertion inside schema
     let schema = Arc::new(create_schema(db.clone()));
 
     let cors = CorsLayer::new().allow_origin(Any).allow_methods(Any).allow_headers(Any);
 
-    // 3️⃣ Router con UN SOLO stato: lo schema
+    // 3️⃣ Router with only one state: the schema
     let app = Router::new() .route("/graphql", get(graphiql).post(graphql_handler)) .with_state(schema.clone()).layer(cors);
 
-    // 4️⃣ Indirizzo del server
+    // 4️⃣ Server address
     let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
     println!("🚀 Server in ascolto su http://{}", addr);
 
-    // 5️⃣ Listener TCP + avvio server
+    // 5️⃣ Listener TCP + server start
     let listener = tokio::net::TcpListener::bind(addr)
         .await
         .expect("Impossibile aprire la porta");
