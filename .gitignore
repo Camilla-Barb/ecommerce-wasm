@@ -13,3 +13,10 @@ Cargo.lock
 # IDE
 .vscode
 .idea
+
+# MongoDB
+mongodb-data/
+*.wt
+*.turtle
+diagnostic.data/
+journal/
