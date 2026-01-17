@@ -20,3 +20,4 @@ mongodb-data/
 *.turtle
 diagnostic.data/
 journal/
+git status
