@@ -20,12 +20,11 @@ export const ProductList: React.FC = () => {
       <ul className="grid">
         {data!.products.map((product, idx) => (
           <li key={idx} className="card">
-            {product.imageUrl && (
-              <img
-                src={product.imageUrl ?? "/images/placeholder.png"}
-                alt={product.name}
-              />
-            )}
+            <img
+              src={product.imageUrl || "/images/placeholder.png"}
+              alt={product.name}
+            />
+
             <h2>{product.name}</h2>
             {product.description && <h3>{product.description}</h3>}
             <p>${product.price}</p>
