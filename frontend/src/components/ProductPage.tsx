@@ -4,7 +4,7 @@ import { ProductList } from "./ProductList";
 export const ProductPage: React.FC = () => {
   return (
     <div>
-      <h1>Products</h1>
+      <h1 className="plpTitle">Products</h1>
       <ProductList />
     </div>
   );

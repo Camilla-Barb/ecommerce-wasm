@@ -16,21 +16,21 @@ export const ProductList: React.FC = () => {
   if (!data) return null;
 
   return (
-    <div>
-      <ul className="grid">
-        {data!.products.map((product, idx) => (
-          <li key={idx} className="card">
-            <img
-              src={product.imageUrl || "/images/placeholder.png"}
-              alt={product.name}
-            />
+    <ul className="grid">
+      {data!.products.map((product, idx) => (
+        <li key={idx} className="card">
+          <img
+            src={product.imageUrl || "/images/placeholder.png"}
+            alt={product.name}
+          />
 
-            <h2>{product.name}</h2>
-            {product.description && <h3>{product.description}</h3>}
-            <p>${product.price}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
+          <h2>{product.name}</h2>
+          {product.description && (
+            <h3 className="productDesc">{product.description}</h3>
+          )}
+          <p>${product.price}</p>
+        </li>
+      ))}
+    </ul>
   );
 };
