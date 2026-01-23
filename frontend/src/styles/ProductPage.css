@@ -1,3 +1,24 @@
-.plpTitle {
-  padding-bottom: 2rem;
+.plpName {
+  position: absolute;
+  top: 10%;
+  left: 2rem;
+  padding: 2rem 0;
+}
+
+.plpParagraph {
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+.heroImg {
+  object-fit: cover;
+  width: 100%;
+}
+
+.productListWrapper {
+  margin: 0 2rem;
+}
+
+.productListWrapper {
+  padding: 8rem 0;
 }

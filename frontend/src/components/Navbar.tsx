@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/Navbar.css";
 
 export const Navbar: React.FC = () => {
   return (
@@ -8,10 +9,10 @@ export const Navbar: React.FC = () => {
           <a href="/">Home</a>
         </li>
         <li>
-          <a href="/about">Wishlist</a>
+          <a href="/wishlist">Wishlist</a>
         </li>
         <li>
-          <a href="/contact">Cart</a>
+          <a href="/cart">Cart</a>
         </li>
       </ul>
     </nav>
